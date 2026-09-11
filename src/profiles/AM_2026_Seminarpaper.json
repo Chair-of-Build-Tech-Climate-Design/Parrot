@@ -1,0 +1,55 @@
+{
+  "Profile": "AM_2026_Seminarpaper",
+  "Questions": [
+    {
+      "Question": "Document layout & Use of template",
+      "Description": "Correct use of the provided Moodle template and compliance with TUM Corporate Design (fonts, headings, spacing).",
+      "Section": "Formal Requirements & Structure",
+      "Feedback": [
+        { "Points": 0, "Text": "This was really bad, you can do better." },
+        { "Points": 1, "Text": "This was somewhat bad, you can improve." },
+        { "Points": 2, "Text": "Neutral / meets expectations." }
+      ]
+    },
+    {
+      "Question": "Document length",
+      "Description": "Optimization scenarios are consistently compared against the baseline to assess improvements or trade-offs.",
+      "Section": "Formal Requirements & Structure",
+      "Feedback": [
+        { "Points": 0, "Text": "Some other answer." },
+        { "Points": 1, "Text": "This answer." },
+        { "Points": 2, "Text": "Neutral / meets expectations." }
+      ]
+    },
+    {
+      "Question": "Clarity of research question",
+      "Description": "The paper states a clear, focused research question that guides the modeling work.",
+      "Section": "Content & Argumentation",
+      "Feedback": [
+        { "Points": 0, "Text": "No clear research question could be identified." },
+        { "Points": 1, "Text": "The research question is present but vague or too broad." },
+        { "Points": 2, "Text": "The research question is clear and well scoped." }
+      ]
+    },
+    {
+      "Question": "Use of literature",
+      "Description": "Relevant literature is cited to support modeling assumptions and design choices.",
+      "Section": "Content & Argumentation",
+      "Feedback": [
+        { "Points": 0, "Text": "Little to no literature was used to support the work." },
+        { "Points": 1, "Text": "Some literature is used but not consistently connected to the arguments made." },
+        { "Points": 2, "Text": "Literature is well integrated and clearly supports the arguments." }
+      ]
+    },
+    {
+      "Question": "Baseline comparison",
+      "Description": "Optimization scenarios are consistently compared against a defined baseline.",
+      "Section": "Modeling & Results",
+      "Feedback": [
+        { "Points": 0, "Text": "No baseline comparison is provided." },
+        { "Points": 1, "Text": "A baseline is mentioned but comparisons are incomplete or inconsistent." },
+        { "Points": 2, "Text": "Scenarios are consistently and clearly compared against the baseline." }
+      ]
+    }
+  ]
+}
