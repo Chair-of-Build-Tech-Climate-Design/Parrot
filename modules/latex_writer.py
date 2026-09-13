@@ -140,11 +140,15 @@ def _section_table(profile: Profile, section: str, results_by_key: dict) -> str:
     comments_width = 0.38  # fixed, same on every table
     point_col_width = (1 - criteria_width - comments_width) / n_point_cols
 
-    point_col_spec = ">{\\centering\\arraybackslash}p{%.3f\\textwidth}|" % point_col_width
+    pad = "4pt"
+    point_col_spec = (
+        (">{\\raggedright\\arraybackslash\\hspace{%s}}p{%.3f\\textwidth}<{\\hspace{%s}}|" 
+        % (pad, point_col_width, pad))
+    )
     col_spec = (
-        "|p{%.3f\\textwidth}|" % criteria_width
+        "|>{\\hspace{%s}}p{%.3f\\textwidth}<{\\hspace{%s}}|" % (pad, criteria_width, pad)
         + point_col_spec * n_point_cols
-        + "p{%.3f\\textwidth}|" % comments_width
+        + ">{\\hspace{%s}}p{%.3f\\textwidth}<{\\hspace{%s}}|" % (pad, comments_width, pad)
     )
 
     lines = []
@@ -191,9 +195,9 @@ def _section_table(profile: Profile, section: str, results_by_key: dict) -> str:
             if points in achieved_counts:
                 achieved_counts[points] += 1
 
-        criteria_cell = rf"\textbf{{{_cell(q.question)}}}"
+        criteria_cell = rf"\footnotesize\textbf{{{_cell(q.question)}}}"
         if q.description:
-            criteria_cell += r" \newline {\small\itshape \hspace{1em}- " + _cell(q.description) + "}"
+            criteria_cell += r" \newline {\footnotesize\itshape \hspace{1em}- " + _cell(q.description) + "}"
 
         marks = []
         for p in point_cols:

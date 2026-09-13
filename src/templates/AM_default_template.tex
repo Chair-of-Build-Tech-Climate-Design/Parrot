@@ -15,8 +15,6 @@
 \usepackage[a4paper,left=2.2cm,right=2.2cm,top=2.5cm,bottom=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{helvet}
-\renewcommand{\familydefault}{\sfdefault}
 \usepackage{xcolor}
 \usepackage{longtable}
 \usepackage{array}
@@ -26,6 +24,8 @@
 \usepackage{ragged2e}
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage{csquotes}
+\usepackage{mathptmx}
 \setlength{\parindent}{0pt}
 
 \definecolor{tumblue}{RGB}{0,101,189}
@@ -55,6 +55,7 @@
 }
 
 \setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{2}
 \setlength{\arrayrulewidth}{0.1pt}
 
 \begin{document}
@@ -82,6 +83,45 @@
 \hrule
 \bigskip
 
+\subsubsection*{Assignment 2, Seminar Paper}
+
+This paper represents the main project assessment from the perspective of a climate engineer.
+The objective is to develop, simulate, and evaluate a numerical model of the student's apartment (or selected
+project space) based on the data collected in Assignment 1.
+
+You may cite content from your Assignment 1 presentation where relevant. Please follow these conventions
+for in-text citations, otherwise follow the TUM citation guide using APA:
+
+\begin{itemize}
+    \item General reference to a slide:
+
+    \textquote{\ldots{}as shown in the baseline occupancy schedule (Assignment 1, slide 7, 2025).}
+
+    \textquote{\ldots{}temperature measurements were used to define boundary conditions (Assignment 1, slides 3--5, 2025).}
+
+    \item Specific table or figure reference:
+
+    \textquote{\ldots{}see baseline thermal profile (Assignment 1, slide 4, Figure 2, 2025).}
+
+    \textquote{\ldots{}see baseline thermal profile (Assignment 1, slide 4, Table 2, 2025).}
+\end{itemize}
+
+Reference list entry for Assignment 1 slides:
+
+\begin{quote}
+Gottkehaskamp, B. G. (2025). \textit{Assignment 1, My Amazing Project Title} [Slides]. Advanced Modeling
+WS2025/26, Technical University of Munich.
+\end{quote}
+
+The work should demonstrate a professional and analytical approach to simulation-based assessment, including
+transparent model setup, clearly defined baseline conditions, and well-justified assumptions. Building on
+this baseline, realistic optimization scenarios shall be developed, simulated, and compared to assess their
+impact on indoor comfort, energy demand, or daylight performance.
+
+The paper is expected to show sound scientific reasoning, awareness of real-world constraints, and critical
+reflection on modelling decisions and results.\\
+
+
 % --- Feedback tables, totals, weighting, grading scale -----------------
 FEEDBACK_TABLE_REPLACEMENT
 
@@ -93,7 +133,7 @@ Some more comments here.
 In Assignment 2, most points focus on modeling, data use, and scenario analysis, as these reflect the main learning goals: developing a baseline, justifying modeling choices, and evaluating optimization scenarios. Formal requirements and presentation account for roughly 15\%. Clear formatting, figures, tables, and citations (APA) are important for professional practice and thesis preparation at TUM, and as climate engineers you will need to communicate data and models clearly to colleagues, clients, or regulatory bodies.
 
 \subsection*{Grading Scale}
-\begin{longtable}{|c|c|}
+\begin{longtable}{|>{\centering\arraybackslash\hspace{2pt}}p{0.5\textwidth}<{\hspace{2pt}}|>{\centering\arraybackslash\hspace{2pt}}p{0.5\textwidth}<{\hspace{2pt}}|}
 \hline
 \textbf{Points Range} & \textbf{Grade} \\ \hline
 > 76 & 1.0 - 1.3 \\ \hline
