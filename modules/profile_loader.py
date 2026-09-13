@@ -9,6 +9,17 @@ Expected profile schema
 ------------------------
 {
   "Profile": "SomeName",
+  "Meta": {
+    "CourseTitle": "Advanced Modeling",
+    "SheetTitle": "Grading Sheet Assignment 02",
+    "Semester": "Winter semester 2025/26",
+    "ChairLines": ["Technical University Munich", "Chair of ..."],
+    "WeightingText": "Optional paragraph explaining section weights.",
+    "GradingScale": [
+      {"Label": "> 76", "Grade": "1.0 - 1.3"},
+      {"Label": "75 - 66", "Grade": "1.3 - 2.1"}
+    ]
+  },
   "Questions": [
     {
       "Question": "string",
@@ -16,13 +27,24 @@ Expected profile schema
       "Section": "string",
       "Feedback": [
         {"Points": 0, "Text": "string"},
-        {"Points": 1, "Text": "string"},
+        {"Points": 1, "Text": ["string", "alternative phrasing", "..."]},
         ...
       ]
     },
     ...
   ]
 }
+
+"Text" may be a single string, or a list of strings when several
+alternative phrasings share the same point value. Each string in the
+list becomes its own selectable option in the UI (all tagged with that
+Feedback entry's "Points" value); grouping them under one "Points" key
+just avoids repeating the number in the JSON.
+
+"Meta" is entirely optional and only used by the LaTeX report generator
+(modules/latex_writer.py) to fill in the document header, the weighting
+paragraph, and the grade-scale table at the end. Leave it out (or omit
+individual keys) and the report simply skips those parts.
 """
 
 from __future__ import annotations
@@ -51,10 +73,28 @@ class Question:
 
 
 @dataclass
+class GradingScaleRow:
+    label: str
+    grade: str
+
+
+@dataclass
+class ProfileMeta:
+    """Optional header/report metadata - see module docstring."""
+    course_title: str = ""
+    sheet_title: str = ""
+    semester: str = ""
+    chair_lines: List[str] = field(default_factory=list)
+    weighting_text: str = ""
+    grading_scale: List[GradingScaleRow] = field(default_factory=list)
+
+
+@dataclass
 class Profile:
     name: str
     path: str
     questions: List[Question] = field(default_factory=list)
+    meta: ProfileMeta = field(default_factory=ProfileMeta)
 
     def sections(self) -> List[str]:
         """Return section names, in first-seen order (no duplicates)."""
@@ -66,6 +106,18 @@ class Profile:
 
     def questions_in_section(self, section: str) -> List[Question]:
         return [q for q in self.questions if q.section == section]
+
+    def max_points_in_section(self, section: str) -> float:
+        """Highest Points value any Feedback option in this section has."""
+        values = [
+            option.points
+            for q in self.questions_in_section(section)
+            for option in q.feedback
+        ]
+        return max(values, default=0)
+
+    def max_points_for_question(self, question: Question) -> float:
+        return max((o.points for o in question.feedback), default=0)
 
 
 class ProfileError(Exception):
@@ -114,10 +166,20 @@ def load_profile(path: str) -> Profile:
     for i, q in enumerate(raw["Questions"]):
         try:
             feedback_raw = q["Feedback"]
-            feedback = [
-                FeedbackOption(points=fb["Points"], text=fb["Text"])
-                for fb in feedback_raw
-            ]
+            feedback: List[FeedbackOption] = []
+            for fb in feedback_raw:
+                points = fb["Points"]
+                text = fb["Text"]
+                # "Text" can be a single string or a list of alternative
+                # phrasings that all share the same Points value.
+                texts = text if isinstance(text, list) else [text]
+                for t in texts:
+                    if not isinstance(t, str):
+                        raise ProfileError(
+                            f"Question #{i} in {path} has a non-string entry "
+                            f"in 'Text': {t!r}."
+                        )
+                    feedback.append(FeedbackOption(points=points, text=t))
             question = Question(
                 question=q["Question"],
                 description=q.get("Description", ""),
@@ -133,4 +195,18 @@ def load_profile(path: str) -> Profile:
     if not questions:
         raise ProfileError(f"Profile {path} contains no questions.")
 
-    return Profile(name=name, path=path, questions=questions)
+    meta_raw = raw.get("Meta", {}) or {}
+    grading_scale = [
+        GradingScaleRow(label=row.get("Label", ""), grade=row.get("Grade", ""))
+        for row in meta_raw.get("GradingScale", [])
+    ]
+    meta = ProfileMeta(
+        course_title=meta_raw.get("CourseTitle", ""),
+        sheet_title=meta_raw.get("SheetTitle", ""),
+        semester=meta_raw.get("Semester", ""),
+        chair_lines=list(meta_raw.get("ChairLines", [])),
+        weighting_text=meta_raw.get("WeightingText", ""),
+        grading_scale=grading_scale,
+    )
+
+    return Profile(name=name, path=path, questions=questions, meta=meta)

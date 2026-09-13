@@ -17,6 +17,8 @@ def build_output(
     profile_name: str,
     student_name: str,
     selections: List[Dict[str, Any]],
+    matriculation_number: str = "",
+    submission_date: str = "",
 ) -> Dict[str, Any]:
     """
     Assemble the final output dict.
@@ -31,6 +33,8 @@ def build_output(
     return {
         "Profile": profile_name,
         "Student": student_name,
+        "MatriculationNumber": matriculation_number,
+        "SubmissionDate": submission_date,
         "CreatedAt": datetime.now().isoformat(timespec="seconds"),
         "TotalPoints": total_points,
         "Results": selections,

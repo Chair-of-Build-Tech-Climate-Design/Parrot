@@ -3,52 +3,24 @@
 A small support tool for producing standardized grading feedback for
 student papers. You define the questions, sections and feedback text
 once in a JSON profile; ParrotFeedback turns that into a tabbed
-click-through interface, and saves your selections to a JSON file you
-can reuse later (e.g. to auto-fill a Word document).
-
-## Requirements
-
-- Python 3.9+
-- `tkinter` (ships with most Python installs; on Linux you may need
-  `sudo apt-get install python3-tk`)
-
-No other dependencies.
-
-## Running it
-
-```bash
-python parrot.py
-```
-
-1. Pick a profile from the dropdown (auto-discovered under `src/profiles/`).
-2. Click **Load profile** — a tab is created per `Section`.
-3. For each question, check the box next to any feedback text(s) that
-   fit — you can select none, one, or several (e.g. several different
-   explanations that all justify the same point tier, like "diagrams
-   don't fit the template", "tables don't fit the template", "abstract
-   too long"). The **Points** field auto-fills with the *highest*
-   points value among the checked options (not a sum — picking three
-   1-point explanations still suggests 1 point, not 3), but you can
-   type over it with whatever value you want. Use **Reset to suggested
-   points** to go back to that auto-calculated value. Optionally add
-   extra notes in the **Append** box - a **Combined output** preview
-   below it always shows the selected feedback texts as one paragraph,
-   followed by a blank line, followed by your appended text, updated
-   live as you type or check/uncheck options.
-4. Click **Save feedback** and choose where to save. A sensible default
-   filename/location is suggested under `src/outputs/`.
+click-through interface, saves your selections to a JSON file, and can
+render that straight into a PDF grading report using a LaTeX template
+you fully control.
 
 ## Project structure
 
 ```
 parrot.py                  # main application (entry point)
+generate_report.py         # CLI: turn a saved output JSON into a PDF report
 modules/
   profile_loader.py        # discovers & validates profile JSON files
   output_writer.py         # builds & saves the grading output JSON
-  gui_widgets.py           # reusable scrollable-frame widget
+  gui_widgets.py           # scrollable-frame + compact multi-select checklist
+  latex_writer.py          # fills in a .tex template and compiles it to PDF
 src/
   profiles/                # your profile JSON files live here
-  outputs/                 # saved grading results land here by default
+  templates/                # your .tex report templates live here
+  outputs/                 # saved grading results (and PDFs) land here by default
 ```
 
 ## Profile JSON schema
@@ -62,7 +34,7 @@ src/
       "Description": "Correct use of the provided Moodle template and compliance with TUM Corporate Design.",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "This was really bad, you can do better." },
+        { "Points": 0, "Text": ["This was really bad, you can do better.", "Another way this could be phrased."] },
         { "Points": 1, "Text": "This was somewhat bad, you can improve." },
         { "Points": 2, "Text": "Neutral / meets expectations." }
       ]
@@ -74,15 +46,37 @@ src/
 - `Section` controls which tab a question appears under. Tabs are
   created automatically in first-seen order — no need to declare them
   separately.
-- `Feedback` can have any number of options with any point values
-  (not limited to 0/1/2).
+- `Feedback` can have any number of entries with any point values (not
+  limited to 0/1/2). Each entry's `"Text"` can be a single string, or a
+  list of strings when several alternative phrasings share the same
+  point value — every string becomes its own selectable option in the
+  UI, so `{"Points": 0, "Text": ["A.", "B."]}` shows up as two separate
+  checkable options, both worth 0 points, without repeating the number.
 - Add as many `Questions` as you like, mixing sections freely — they'll
   be grouped correctly regardless of order in the file.
+- `Meta` is entirely optional. It's only used by the PDF report
+  generator to fill in the header, the weighting paragraph, and the
+  grading-scale table — leave any part of it out and the report just
+  skips that section.
 
 A ready-to-use example lives at `src/profiles/AM_2026_Seminarpaper.json`.
 
 To add a new profile, drop another `.json` file following this schema
 into `src/profiles/` — it will show up in the dropdown automatically.
+
+## Grading interface
+
+Each question shows its feedback options in a compact, independently
+scrollable checklist (not a dropdown, and not one giant unscrollable
+stack of checkboxes) — any number of options can be checked, long
+option text still wraps and stays fully readable, and a question with
+many options doesn't balloon the whole tab. Points are auto-suggested
+from whatever's checked (the highest point value among the checked
+options, since alternative phrasings of the same tier shouldn't sum
+together) but the Points field stays a normal, freely editable entry.
+
+On the start screen you pick both a **Profile** and a **PDF template**
+(see below) before grading — same dropdown-and-load pattern for both.
 
 ## Output JSON
 
@@ -92,19 +86,21 @@ Saved results look like this:
 {
   "Profile": "AM_2026_Seminarpaper",
   "Student": "Max Mustermann",
+  "MatriculationNumber": "03123456",
+  "SubmissionDate": "27.03.2026",
   "CreatedAt": "2026-09-07T12:00:00",
   "TotalPoints": 10,
   "Results": [
     {
       "section": "Formal Requirements & Structure",
       "question": "Document layout & Use of template",
+      "description": "Correct use of the provided Moodle template...",
       "points": 2,
       "feedback_text": "Neutral / meets expectations.",
       "feedback_selections": [
         { "points": 2, "text": "Neutral / meets expectations." }
       ],
-      "appended_text": "extra note",
-      "combined_text": "Neutral / meets expectations.\n\nextra note"
+      "appended_text": "extra note"
     }
   ]
 }
@@ -118,18 +114,70 @@ Saved results look like this:
 - `feedback_selections` gives you the same information as a structured
   list, one entry per checked option, in case you need points/text
   separately.
-- `combined_text` is exactly what's shown in the GUI's "Combined
-  output" preview: `feedback_text`, then a blank line, then
-  `appended_text` - ready to drop straight into a Word doc.
+- `appended_text` is whatever you typed into the optional "Append" box
+  for that question — kept separate rather than pre-merged into
+  `feedback_text`, so the PDF report (or any other consumer) can decide
+  how to present it.
 
-This is the file you'd later feed into a Word-generation step.
+## PDF report templates
 
-## Notes on the original spec
+Reports are generated from a plain `.tex` file that you fully control —
+there's no templating engine or special syntax to learn. ParrotFeedback
+just looks for a handful of literal keywords in the file and replaces
+them; everything else about the file (fonts, colors, layout, your own
+logo image, page size, whatever) is normal LaTeX you can edit by hand.
 
-The JSON layout originally sketched in the request wasn't valid JSON —
-a list (`[...]`) can only contain values, not bare `"key": value`
-pairs; those need to live inside objects (`{...}`). The schema above
-keeps the same information (Question, Description, Section, Feedback)
-but wraps each question in its own `{}` inside a `Questions` list, and
-turns each `Feedback` entry into a `{"Points": ..., "Text": ...}`
-object so multi-word/long feedback text is unambiguous.
+Drop `.tex` files into `src/templates/` — they show up in the "PDF
+template" dropdown on the start screen, next to the profile picker.
+
+**Placeholders your template can use:**
+
+| Keyword                  | Replaced with |
+|---------------------------|----------------|
+| `COURSE_TITLE`             | Profile `Meta.CourseTitle` |
+| `SHEET_TITLE`              | Profile `Meta.SheetTitle` |
+| `SEMESTER`                 | Profile `Meta.Semester` |
+| `STUDENT_NAME`             | The "Student name" field |
+| `MATRICULATION_NUMBER`     | The "Matriculation number" field |
+| `SUBMISSION_DATE`          | The "Submission date" field |
+| `CHAIR_FOOTER`             | Profile `Meta.ChairLines`, joined with `\\` |
+| `TOTAL_POINTS`             | Grand total points achieved |
+| `MAX_POINTS`               | Grand total points achievable |
+| `FEEDBACK_TABLE_REPLACEMENT` | One full LaTeX block: a table per section (criteria, a column per possible point value with an "X" marking what was awarded, and a Comments column), section/grand totals, and — if present in the profile — the weighting paragraph and grading-scale table |
+
+A ready-to-use example lives at
+`src/templates/AM_default_template.tex`. Copy it as a starting point
+for your own layout.
+
+**One rule when editing a template**: don't spell out a placeholder's
+exact keyword anywhere in the file except where you want its value
+inserted — the replacement is a straightforward find-and-replace, so
+mentioning e.g. `SEMESTER` again in an explanatory comment would get
+overwritten too. (Regular LaTeX comments — text after an unescaped `%`
+— are skipped during replacement as a safety net, but it's simplest to
+just avoid the exact spelling elsewhere.)
+
+### Generating a PDF report
+
+1. **From the app**: click "Generate PDF report" next to "Save
+   feedback" once you've graded a student — it builds the output data
+   in memory, re-reads your chosen template fresh from disk (so edits
+   you made after selecting it are picked up), and compiles straight to
+   a PDF you choose a save location for.
+2. **From the command line**, using a previously saved output JSON:
+
+   ```bash
+   python generate_report.py src/outputs/AM_2026_Seminarpaper_Bauta.json
+   ```
+
+   This auto-detects the matching profile under `src/profiles/` from
+   the JSON's `"Profile"` field, and auto-detects the template if
+   exactly one `.tex` file exists under `src/templates/`. Pass
+   `--profile path/to/profile.json` or `--template path/to/template.tex`
+   to point at either explicitly, `--out some/dir` to control where the
+   PDF lands, and `--keep-tex` if you also want the filled-in `.tex`
+   source saved alongside it (handy for debugging your template).
+
+**Requirements**: a working LaTeX installation with `pdflatex` on your
+`PATH` (e.g. TeX Live or MiKTeX). If it's missing, both the button and
+the CLI script will tell you clearly rather than failing silently.
