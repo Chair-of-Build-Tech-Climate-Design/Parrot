@@ -142,10 +142,8 @@ template" dropdown on the start screen, next to the profile picker.
 | `STUDENT_NAME`             | The "Student name" field |
 | `MATRICULATION_NUMBER`     | The "Matriculation number" field |
 | `SUBMISSION_DATE`          | The "Submission date" field |
-| `CHAIR_FOOTER`             | Profile `Meta.ChairLines`, joined with `\\` |
 | `TOTAL_POINTS`             | Grand total points achieved |
 | `MAX_POINTS`               | Grand total points achievable |
-| `FEEDBACK_TABLE_REPLACEMENT` | One full LaTeX block: a table per section (criteria, a column per possible point value with an "X" marking what was awarded, and a Comments column), section/grand totals, and — if present in the profile — the weighting paragraph and grading-scale table |
 
 A ready-to-use example lives at
 `src/templates/AM_default_template.tex`. Copy it as a starting point
