@@ -1,6 +1,4 @@
 """
-parrot.py
-
 ParrotFeedback - a small support tool that helps produce standardized
 grading feedback for student papers, based on a reusable JSON profile
 that defines questions, sections and feedback text options.
@@ -50,6 +48,10 @@ from modules.latex_writer import (  # noqa: E402
 
 
 APP_TITLE = "ParrotFeedback"
+
+# Path to the app icon (PNG). Relative to this file so it works no matter
+# what directory the script is launched from.
+ICON_PATH = os.path.join(BASE_DIR, "assets", "icons8-parrot-96.png")
 
 
 class QuestionRow(ttk.Frame):
@@ -219,17 +221,65 @@ class QuestionRow(ttk.Frame):
         return bool(self.options_list.selected_indices())
 
 
+def _fix_windows_taskbar_icon():
+    """
+    On Windows, the taskbar icon is tied to the process's "App User Model
+    ID", not the Tk window icon. Without this, apps launched via
+    python.exe/pythonw.exe get grouped under Python's own icon on the
+    taskbar regardless of what iconphoto()/iconbitmap() is set to.
+    Calling this before the Tk window is created gives the process its
+    own identity so the taskbar uses our icon instead.
+    No-op on non-Windows platforms.
+    """
+    if sys.platform != "win32":
+        return
+    try:
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+            "ParrotFeedback.App"
+        )
+    except Exception as e:
+        print(f"Warning: could not set AppUserModelID: {e}", file=sys.stderr)
+
+
 class ParrotApp(tk.Tk):
     def __init__(self):
+        _fix_windows_taskbar_icon()
         super().__init__()
         self.title(APP_TITLE)
         self.geometry("900x700")
+        self._set_app_icon()
 
         self.profile: Profile | None = None
         self.question_rows: list[QuestionRow] = []
         self.template_path: str | None = None
 
         self._build_start_screen()
+
+    # ------------------------------------------------------------------
+    # Window icon
+    # ------------------------------------------------------------------
+    def _set_app_icon(self):
+        """
+        Set the window/taskbar icon from assets/icons8-parrot-96.png.
+
+        Uses iconphoto (not iconbitmap) since the icon is a PNG rather
+        than a .ico/.xbm file. Keep a reference on self so the PhotoImage
+        isn't garbage-collected (which would blank the icon).
+        """
+        if not os.path.isfile(ICON_PATH):
+            print(f"Warning: icon not found at {ICON_PATH}", file=sys.stderr)
+            return
+        try:
+            large = tk.PhotoImage(file=ICON_PATH)
+            # A smaller subsampled copy tends to render more reliably as
+            # the taskbar/Alt-Tab "small" icon than scaling the 96px image
+            # down on the fly.
+            small = large.subsample(3, 3)  # ~32px
+            self._icon_images = (large, small)  # keep refs alive
+            self.iconphoto(True, large, small)
+        except tk.TclError as e:
+            print(f"Warning: could not load icon '{ICON_PATH}': {e}", file=sys.stderr)
 
     # ------------------------------------------------------------------
     # Screen 1: profile selection

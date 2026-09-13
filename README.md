@@ -7,6 +7,8 @@ click-through interface, saves your selections to a JSON file, and can
 render that straight into a PDF grading report using a LaTeX template
 you fully control.
 
+Parrot Icon from https://img.icons8.com/?size=100&id=KhmZ1QJoUFqp&format=png&color=000000
+
 ## Project structure
 
 ```
