@@ -11,9 +11,32 @@
       "Description": "Correct use of the provided Moodle template and compliance with TUM Corporate Design (fonts, headings, spacing).",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "The provided template was not used, or was substantially altered. Fonts, heading styles, and spacing deviate noticeably from TUM Corporate Design. This affects the professional appearance of the document." },
-        { "Points": 1, "Text": "The template is largely followed. However, some inconsistencies in fonts, heading levels, or spacing remain and should be aligned with the TUM Corporate Design guidelines." },
-        { "Points": 2, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The provided template was not used, or was substantially altered. Fonts, heading styles, and spacing deviate noticeably from TUM Corporate Design. This affects the professional appearance of the document.",
+            "The Moodle template was not used. A self-made layout is not acceptable here, as the TUM Corporate Design is part of the task.",
+            "Page margins, fonts and heading styles were changed compared to the template. Please keep the template untouched apart from the content."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The template is largely followed. However, some inconsistencies in fonts, heading levels, or spacing remain and should be aligned with the TUM Corporate Design guidelines.",
+            "Heading styles are not consistent: some headings are manually formatted instead of using the template styles.",
+            "Font sizes or line spacing deviate from the template in some places (e.g. captions, tables, footnotes).",
+            "Parts of the template placeholder text (title page, header, abstract) were left unchanged or are only partially filled in.",
+            "The template is used, but the overall layout looks crowded: figures and tables are squeezed in and leave little white space."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The template is used correctly and consistently. The document looks clean and professional.",
+            "Layout, fonts and headings follow the TUM Corporate Design throughout. Well done.",
+            "Clean use of the template; figures, tables and text blocks are nicely arranged."
+          ]
+        }
       ]
     },
     {
@@ -21,9 +44,30 @@
       "Description": "Adherence to the maximum page limit (8 pages excluding references) and required submission format (.pdf).",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "The paper exceeds the 8-page limit by a significant margin, or was not submitted in the required .pdf format. The page limit isn't arbitrary — it forces you to be concise and prioritize what actually matters. Right now you're trying to fit in too much, which dilutes the overall impact." },
-        { "Points": 1, "Text": "The paper exceeds the page limit by a small margin. Consider consolidating verbose sections or removing elements such as the table of contents or list of figures to stay within the limit." },
-        { "Points": 2, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The paper exceeds the 8-page limit by a significant margin, or was not submitted in the required .pdf format. The page limit isn't arbitrary — it forces you to be concise and prioritize what actually matters. Right now you're trying to fit in too much, which dilutes the overall impact.",
+            "The paper is clearly longer than 8 pages (excluding references). Appendices must not be used to bypass the page limit.",
+            "The paper is far too short to cover baseline, scenarios and discussion in the required depth."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The paper exceeds the page limit by a small margin. Consider consolidating verbose sections or removing elements such as the table of contents or list of figures to stay within the limit.",
+            "The main text slightly exceeds the 8 pages. Reduce the figure sizes or tighten the text.",
+            "The page limit is only met by shrinking figures, fonts or margins. Prioritise content instead.",
+            "A large part of the relevant results is shifted to the appendix. Key results should be in the main text, the appendix is not part of the evaluation."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The paper respects the page limit and uses the available space well.",
+            "Good length: concise and focused, nothing essential is missing."
+          ]
+        }
       ]
     },
     {
@@ -31,9 +75,33 @@
       "Description": "Clear, precise, and formal scientific language with consistent terminology and correct grammar.",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "The writing style is largely informal or imprecise. Frequent grammatical errors and inconsistent terminology make the arguments difficult to follow." },
-        { "Points": 1, "Text": "The writing is mostly clear. Occasional informal phrasing, inconsistent terminology, or grammatical errors reduce readability at points and should be revised." },
-        { "Points": 2, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The writing style is largely informal or imprecise. Frequent grammatical errors and inconsistent terminology make the arguments difficult to follow.",
+            "The text reads like an unedited draft. Many sentences are incomplete or unclear.",
+            "Frequent spelling and grammar errors; terminology (e.g. operative vs. air temperature) is used inconsistently or incorrectly."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The writing is mostly clear. Occasional informal phrasing, inconsistent terminology, or grammatical errors reduce readability at points and should be revised.",
+            "Terminology is not used consistently (e.g. 'room' / 'zone' / 'apartment' for the same thing).",
+            "Some sentences are very long and hard to follow. Shorter sentences would improve readability.",
+            "Occasional colloquial wording or first-person narration; a more neutral, scientific tone is expected.",
+            "Abbreviations and symbols are used before they are introduced, or without units.",
+            "Some passages sound generic and do not refer to your specific model; please be more concrete and precise."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The text is clear, precise and written in a good scientific style.",
+            "Well written: terminology is consistent and the argumentation is easy to follow.",
+            "Language is fluent and precise with only negligible errors."
+          ]
+        }
       ]
     },
     {
@@ -41,9 +109,33 @@
       "Description": "Figures and tables are clearly labeled, referenced in the text, and include meaningful captions.",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "Several figures or tables lack proper labels or captions, and are not referenced in the text. This makes them difficult to interpret on their own." },
-        { "Points": 1, "Text": "Most figures and tables are labeled and captioned. Some, however, are missing a text reference or a caption that fully explains what is shown. Figures that are meant to be compared directly also don't always share the same axis scales — this makes it genuinely harder to compare them at a glance and can be a bit misleading for the reader." },
-        { "Points": 2, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Several figures or tables lack proper labels or captions, and are not referenced in the text. This makes them difficult to interpret on their own.",
+            "Figures are not numbered or captioned at all.",
+            "Figures and tables are largely not referenced or explained in the text; the reader has to guess what is shown."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Most figures and tables are labeled and captioned. Some, however, are missing a text reference or a caption that fully explains what is shown. Figures that are meant to be compared directly also don't always share the same axis scales — this makes it genuinely harder to compare them at a glance and can be a bit misleading for the reader.",
+            "Some captions are too short to be understood without reading the text (what, which scenario, which period?).",
+            "Axis labels or units are missing in a few figures.",
+            "Some figures and tables are placed far away from the text that refers to them.",
+            "Figure numbering or references in the text are inconsistent (wrong or missing numbers).",
+            "Figures taken from other sources are not marked with a source.",
+            "Subfigures are not labelled (a, b, c), so the text cannot refer to them precisely."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "All figures and tables are numbered, captioned, referenced in the text and understandable on their own.",
+            "Captions are informative and self-contained. Good work."
+          ]
+        }
       ]
     },
     {
@@ -51,9 +143,33 @@
       "Description": "Proper citation of all sources using a consistent academic referencing style.",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "Sources are frequently uncited, or the referencing style is inconsistent throughout. It is difficult to trace claims back to their origin." },
-        { "Points": 1, "Text": "Some references appear multiple times in the footnotes under different numbers — for example, the same source is cited separately as 7, 8, and 9. Where a source is used more than once on the same page, the same footnote number should be reused instead. Additionally, some reference entries are left in German, such as \"Online verfügbar unter…\" — these should be translated to their English equivalents to maintain consistency." },
-        { "Points": 2, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Sources are frequently uncited, or the referencing style is inconsistent throughout. It is difficult to trace claims back to their origin.",
+            "Almost no sources are used for the data and assumptions, or most are not traceable (e.g. only bare links).",
+            "Mostly non-scientific sources (blogs, shops, manufacturer websites) are used where standards or literature would be required."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Some references appear multiple times in the footnotes under different numbers — for example, the same source is cited separately as 7, 8, and 9. Where a source is used more than once on the same page, the same footnote number should be reused instead. Additionally, some reference entries are left in German, such as \"Online verfügbar unter…\" — these should be translated to their English equivalents to maintain consistency.",
+            "The citation style is not consistent (mixed formats, missing authors, years or access dates).",
+            "Several references are bare URLs without title, author or access date.",
+            "Few scientific sources or standards (e.g. DIN, EN, ISO, ASHRAE) are used; many assumptions are not backed by a reference.",
+            "Some sources are listed in the bibliography but never cited in the text, or vice versa.",
+            "Some references are incomplete, e.g. missing the publisher, year or page numbers.",
+            "Data and figures from Assignment 1 or from external sources are used without citing them."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "References are complete, consistent and relevant. A good mix of standards, literature and data sources.",
+            "Citation style is consistent and sources are easy to trace."
+          ]
+        }
       ]
     },
     {
@@ -61,9 +177,31 @@
       "Description": "Logical organization of the paper with well-defined sections that support readability and argument flow.",
       "Section": "Formal Requirements & Structure",
       "Feedback": [
-        { "Points": 0, "Text": "The structure of the paper is difficult to follow. Sections are missing, poorly delineated, or do not build on one another logically." },
-        { "Points": 1, "Text": "The overall structure is recognizable, but the flow between sections could be improved. Some sections would also benefit from being consolidated or reordered for better readability." },
-        { "Points": 2, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The structure of the paper is difficult to follow. Sections are missing, poorly delineated, or do not build on one another logically.",
+            "The structure does not follow a scientific logic (e.g. results mixed with methods, no conclusion section)."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The overall structure is recognizable, but the flow between sections could be improved. Some sections would also benefit from being consolidated or reordered for better readability.",
+            "Methods and results are partly mixed. Describe the model first and present the results afterwards.",
+            "Some sections are very short (only a few lines) and could be merged; others are overloaded.",
+            "No clear transition between baseline and scenarios; the reader loses the thread.",
+            "A short introduction with research question / objective is missing or too vague.",
+            "Sections or subsections are not numbered, or the hierarchy is inconsistent."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The structure is logical and easy to follow, from the research question through the baseline and scenarios to the conclusion.",
+            "Clear sectioning with a good red thread throughout."
+          ]
+        }
       ]
     },
     {
@@ -71,11 +209,45 @@
       "Description": "Consistent and correct use of measured or derived data from Assignment 1 to set up the simulation model.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "Data from Assignment 1 is not used, or is used incorrectly. The resulting simulation setup is disconnected from the previously derived results." },
-        { "Points": 1, "Text": "Data from Assignment 1 is referenced, but its transfer into the simulation model is incomplete in places." },
-        { "Points": 2, "Text": "Data from Assignment 1 is mostly used correctly. A few minor inconsistencies remain in how it informs the simulation setup." },
-        { "Points": 3, "Text": "Data from Assignment 1 is consistently and correctly carried over into the simulation model." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Data from Assignment 1 is not used, or is used incorrectly. The resulting simulation setup is disconnected from the previously derived results.",
+            "The simulation seems to be based on generic assumptions rather than the measured / collected data of Assignment 1."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Data from Assignment 1 is referenced, but its transfer into the simulation model is incomplete in places.",
+            "Only some of the Assignment 1 findings (e.g. measured temperatures) appear again in the model. It is not clear how the rest was used.",
+            "The link between the Assignment 1 results and the chosen scenarios is weak. It is unclear why these scenarios follow from your baseline analysis.",
+            "Measured data is shown, but it is not used for any kind of comparison or calibration with the simulation."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Data from Assignment 1 is mostly used correctly. A few minor inconsistencies remain in how it informs the simulation setup.",
+            "Assignment 1 data informs the baseline, but the transfer is not always made explicit (e.g. which measured value led to which model input).",
+            "The measurements are used to set up the model, but a comparison between measured and simulated results is missing or only qualitative."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Data from Assignment 1 is consistently and correctly carried over into the simulation model.",
+            "The data from Assignment 1 is clearly visible in the model inputs and the scenario choice. Only small gaps remain.",
+            "Good link between the measured data and the model, including a short comparison of simulated and measured values."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent use of the Assignment 1 data: it is transferred systematically into the model and also used to check the simulation results.",
+            "The scenarios follow logically from the findings of Assignment 1; the connection is clear and well documented."
+          ]
+        }
       ]
     },
     {
@@ -83,11 +255,47 @@
       "Description": "The simulation model is clearly described so that assumptions, inputs, and methods are understandable and traceable.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The model description is largely absent or too vague. It remains unclear which assumptions, inputs, and methods were actually used." },
-        { "Points": 1, "Text": "The model is described, but key assumptions or inputs are missing or unclear. This makes parts of the setup difficult to trace." },
-        { "Points": 2, "Text": "The model description covers most relevant assumptions and inputs. Some methodological details, however, remain underspecified." },
-        { "Points": 3, "Text": "The model is described clearly and transparently, with only minor gaps in traceability." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The model description is largely absent or too vague. It remains unclear which assumptions, inputs, and methods were actually used.",
+            "Hard to understand how the model is set up; geometry, materials and inputs are not described."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The model is described, but key assumptions or inputs are missing or unclear. This makes parts of the setup difficult to trace.",
+            "The geometry is described, but material properties (U-values, g-values) are not given.",
+            "Internal gains, occupancy and ventilation schedules are not specified, so the model cannot be reproduced.",
+            "A table of all key input parameters is missing. Please add one (also to the appendix if needed).",
+            "Simulation settings (time step, weather data, simulation period, spin-up) are not described."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The model description covers most relevant assumptions and inputs. Some methodological details, however, remain underspecified.",
+            "A parameter table is given, but not all of the values are traceable to a source.",
+            "The model is reasonably well described. Screenshots of the Grasshopper definition or TRNSYS components could help the reader.",
+            "Weather data and simulation settings are mentioned, but not fully specified (location, year, time step)."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The model is described clearly and transparently, with only minor gaps in traceability.",
+            "The model is described clearly. A reader could rebuild it with only small additional questions.",
+            "Clear description including a parameter table; only few details (e.g. schedules or time step) are missing."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Very transparent model documentation. All inputs, schedules, weather data and settings are given; the model could be reproduced.",
+            "Excellent parameter table and a clear overview of the model structure."
+          ]
+        }
       ]
     },
     {
@@ -95,11 +303,45 @@
       "Description": "Clear definition of baseline conditions, including all relevant parameters and modelling assumptions.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "No clear baseline is defined. Key parameters and assumptions underlying it are missing." },
-        { "Points": 1, "Text": "A baseline is defined, but some relevant parameters or assumptions are not stated explicitly. This leaves room for ambiguity." },
-        { "Points": 2, "Text": "The baseline is defined with most relevant parameters and assumptions stated. A few minor details could still be clarified." },
-        { "Points": 3, "Text": "The baseline is clearly defined, with relevant parameters and modelling assumptions stated consistently." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "No clear baseline is defined. Key parameters and assumptions underlying it are missing.",
+            "Baseline and scenario are mixed up, so it is not clear what the reference case is."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "A baseline is defined, but some relevant parameters or assumptions are not stated explicitly. This leaves room for ambiguity.",
+            "The baseline is described qualitatively, but no concrete values (U-values, air change rates, gains) are given.",
+            "Baseline assumptions are different from the measured situation in Assignment 1 without any explanation.",
+            "It is not clear which period or conditions (e.g. summer week, heating season) the baseline represents."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The baseline is defined with most relevant parameters and assumptions stated. A few minor details could still be clarified.",
+            "The baseline is defined, but some assumptions (e.g. window use, occupancy) are only mentioned and not discussed.",
+            "The baseline parameters are listed, but the reason why they were chosen is not always given."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The baseline is clearly defined, with relevant parameters and modelling assumptions stated consistently.",
+            "The baseline is clearly defined and consistent with the apartment. Only minor assumptions could be explained in more detail.",
+            "Clear baseline definition with a table of the main parameters and reference to the data."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "The baseline is defined precisely and transparently; assumptions are listed, justified and linked to the data.",
+            "Excellent baseline: clearly separated from the scenarios and well documented."
+          ]
+        }
       ]
     },
     {
@@ -107,11 +349,46 @@
       "Description": "Appropriateness, rigor, and clarity of the chosen modelling strategy, including justified complexity (e.g. custom equations, advanced Grasshopper logic) or well-argued simplifications.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The modelling approach is not appropriate for the research question. The Grasshopper logic is unclear and not explained." },
-        { "Points": 1, "Text": "The modelling approach is basic and largely relies on default settings. There is little justification for the chosen level of complexity or the simplifications made." },
-        { "Points": 2, "Text": "The modelling approach is appropriate and reasonably clear. The level of complexity or the simplifications made, however, could be better justified." },
-        { "Points": 3, "Text": "The modelling approach is well-suited to the research question, with clear and mostly well-justified choices regarding complexity and simplification." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The modelling approach is not appropriate for the research question. The Grasshopper logic is unclear and not explained.",
+            "The Grasshopper workflow is not explained at all. It is unclear how the geometry and the simulation are connected."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The modelling approach is basic and largely relies on default settings. There is little justification for the chosen level of complexity or the simplifications made.",
+            "The workflow is only listed (components) but not explained. The reader does not learn why the steps are needed.",
+            "The model is a simple single-zone model; the choice is not justified and its consequences (no heat exchange between rooms) are not discussed.",
+            "Default settings were used almost everywhere. Please state which defaults were kept and why."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The modelling approach is appropriate and reasonably clear. The level of complexity or the simplifications made, however, could be better justified.",
+            "The approach is reasonable, but the level of detail (e.g. zoning, number of nodes, time step) is not justified.",
+            "The workflow is described, but a simple scheme / flow chart of the model would make it much easier to follow.",
+            "The treatment of solar gains, shading and infiltration is only briefly explained."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The modelling approach is well-suited to the research question, with clear and mostly well-justified choices regarding complexity and simplification.",
+            "A sensible and well-chosen modelling approach; the workflow is clear.",
+            "Good explanation of the Grasshopper/TRNSYS workflow including simplifications."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Very well chosen and clearly documented approach with an appropriate level of detail.",
+            "Excellent explanation of the workflow; a clear model scheme supports the text."
+          ]
+        }
       ]
     },
     {
@@ -119,11 +396,45 @@
       "Description": "Modelling decisions and parameter values are logically justified and linked to data, standards, or literature.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "Modelling decisions and parameter values are largely unjustified. They are not linked to data, standards, or literature." },
-        { "Points": 1, "Text": "Some modelling decisions and parameters are justified. Many, however, rely on unexplained assumptions rather than data, standards, or literature." },
-        { "Points": 2, "Text": "Most modelling decisions and parameter values are justified and linked to data or literature. A few remain unexplained." },
-        { "Points": 3, "Text": "Modelling decisions and parameter values are consistently justified and linked to relevant data, standards, or literature." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Modelling decisions and parameter values are largely unjustified. They are not linked to data, standards, or literature.",
+            "Parameters appear to be chosen arbitrarily; no explanation is given."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Some modelling decisions and parameters are justified. Many, however, rely on unexplained assumptions rather than data, standards, or literature.",
+            "Many parameters are taken from software defaults without checking whether they fit the apartment.",
+            "Values such as air change rate, internal gains or U-values are stated without a source or reasoning.",
+            "Parameter choices are explained in general terms only; the link to the specific building is missing."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Most modelling decisions and parameter values are justified and linked to data or literature. A few remain unexplained.",
+            "Most key parameters are justified. For some (e.g. infiltration, shading factor, occupancy) the reasoning is missing.",
+            "Some justifications are based on a single source; a comparison with typical ranges or standards would strengthen them."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Modelling decisions and parameter values are consistently justified and linked to relevant data, standards, or literature.",
+            "Parameters are justified by standards, literature or measurements. Only minor choices remain unexplained.",
+            "Convincing justification of the main parameters, with references."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "All important parameters are justified and the influence of uncertain ones is discussed. Excellent.",
+            "Very good argumentation of the modelling decisions based on standards, literature and measured data."
+          ]
+        }
       ]
     },
     {
@@ -131,11 +442,45 @@
       "Description": "The model and assumptions realistically represent the actual apartment and plausible user behaviour.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The model and its assumptions do not plausibly represent the actual apartment or realistic user behaviour." },
-        { "Points": 1, "Text": "The model captures some aspects of the actual apartment or user behaviour. Several assumptions, however, appear unrealistic or insufficiently justified." },
-        { "Points": 2, "Text": "The model and assumptions are reasonably plausible. Only minor deviations from realistic conditions or user behaviour remain." },
-        { "Points": 3, "Text": "The model and assumptions realistically represent the apartment and user behaviour, with only small simplifications." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The model and its assumptions do not plausibly represent the actual apartment or realistic user behaviour.",
+            "The results are not plausible (e.g. temperatures far outside any realistic range) and are not questioned."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The model captures some aspects of the actual apartment or user behaviour. Several assumptions, however, appear unrealistic or insufficiently justified.",
+            "Some assumptions are unrealistic, e.g. constant window opening, 24/7 occupancy or no internal gains.",
+            "The simulated temperatures differ strongly from the measured data in Assignment 1 without discussion.",
+            "The user behaviour in the model is not representative; please discuss how typical residents would behave."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The model and assumptions are reasonably plausible. Only minor deviations from realistic conditions or user behaviour remain.",
+            "Plausible in general; a few simplifications (e.g. schedule, window opening) would deserve a short discussion.",
+            "The results seem plausible, but a check against measurements or typical values is missing."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The model and assumptions realistically represent the apartment and user behaviour, with only small simplifications.",
+            "The model represents the apartment realistically; simplifications are acknowledged.",
+            "Realistic user behaviour and boundary conditions; results are plausible."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Very plausible representation of the real apartment, checked against measurement data.",
+            "Excellent link to real-world use: user behaviour and conditions are realistic and discussed."
+          ]
+        }
       ]
     },
     {
@@ -143,11 +488,46 @@
       "Description": "Clear focus on the selected topic with well-defined and feasible optimization scenarios.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The paper lacks a clear focus. The optimization scenarios are poorly defined or not feasible." },
-        { "Points": 1, "Text": "The focus of the paper is recognizable. The scenarios, however, are only partially well-defined, and their feasibility is questionable in places." },
-        { "Points": 2, "Text": "The paper maintains a reasonably clear focus. The scenarios are defined adequately, though not always fully elaborated." },
-        { "Points": 3, "Text": "The paper maintains a clear focus on the chosen topic, with well-defined and feasible optimization scenarios." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The paper lacks a clear focus. The optimization scenarios are poorly defined or not feasible.",
+            "No clear research question; the scenarios are not related to each other or to the baseline."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The focus of the paper is recognizable. The scenarios, however, are only partially well-defined, and their feasibility is questionable in places.",
+            "The scenarios are described only briefly. Parameters of each scenario (what exactly is changed, by how much) are missing.",
+            "Too many different measures are mixed in one scenario, so the effect of single measures cannot be separated.",
+            "The motivation for the chosen scenarios is not derived from the baseline analysis.",
+            "The scenario is hardly feasible in the real apartment (cost, permission, effort) and this is not discussed."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The paper maintains a reasonably clear focus. The scenarios are defined adequately, though not always fully elaborated.",
+            "Scenarios are defined clearly enough, but it is not fully explained why exactly these were chosen over alternatives.",
+            "Good focus overall, but the paper partly drifts to side topics that do not help the research question."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The paper maintains a clear focus on the chosen topic, with well-defined and feasible optimization scenarios.",
+            "Clear focus and well-defined, realistic scenarios derived from the baseline.",
+            "Scenarios are well motivated, changes are specified, and the number is appropriate for the scope."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent focus: a clear research question and scenarios that logically follow from the baseline analysis, with concrete parameters.",
+            "Very well chosen and realistic scenarios; each change is isolated and well documented."
+          ]
+        }
       ]
     },
     {
@@ -155,11 +535,45 @@
       "Description": "Selection and correct use of meaningful indicators suitable for evaluating the chosen topic.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The chosen performance indicators are not suitable for evaluating the topic, or are used incorrectly." },
-        { "Points": 1, "Text": "The performance indicators are somewhat relevant. Their selection or application, however, is not fully appropriate for the research question." },
-        { "Points": 2, "Text": "The performance indicators are mostly appropriate and correctly applied. There is minor room for improvement in their selection." },
-        { "Points": 3, "Text": "Meaningful performance indicators are selected and correctly applied to evaluate the chosen topic." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The chosen performance indicators are not suitable for evaluating the topic, or are used incorrectly.",
+            "No performance indicator is defined; results are only shown as raw time series."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The performance indicators are somewhat relevant. Their selection or application, however, is not fully appropriate for the research question.",
+            "Only the mean air temperature is used. It does not show the comfort problem (e.g. peaks, duration of overheating).",
+            "Heating demand is used, but it is not compared to a reference value or normalised (e.g. per m2).",
+            "The indicator is defined, but the threshold (e.g. 26 or 27 °C) is not justified."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The performance indicators are mostly appropriate and correctly applied. There is minor room for improvement in their selection.",
+            "Appropriate indicators are chosen. A second indicator (e.g. operative temperature, degree hours, energy demand) would complete the picture.",
+            "Indicators are meaningful, but thresholds or calculation methods (e.g. adaptive comfort, EN 16798 / DIN 4108-2) should be referenced."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Meaningful performance indicators are selected and correctly applied to evaluate the chosen topic.",
+            "Good, relevant indicators (e.g. overheating hours or degree hours) with clearly stated thresholds.",
+            "Indicators fit the research question and are calculated correctly."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Very well chosen set of indicators, justified by standards and complementing each other (comfort and energy).",
+            "Excellent choice and definition of indicators, including thresholds from standards."
+          ]
+        }
       ]
     },
     {
@@ -167,11 +581,45 @@
       "Description": "Appropriate selection of results for tables and figures, focusing on data that directly supports the analysis and research questions.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The selection of data shown in tables and figures is largely irrelevant to the analysis or research questions." },
-        { "Points": 1, "Text": "Some of the depicted data supports the analysis. The selection, however, also includes less relevant results that dilute the focus." },
-        { "Points": 2, "Text": "Most of the depicted data is relevant and supports the analysis. Only minor inclusions of less essential results remain." },
-        { "Points": 3, "Text": "The selection of results for tables and figures is appropriate and consistently supports the analysis and research questions." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The selection of data shown in tables and figures is largely irrelevant to the analysis or research questions.",
+            "The figures are not related to the research question, or too much raw data is shown without selection."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Some of the depicted data supports the analysis. The selection, however, also includes less relevant results that dilute the focus.",
+            "Some figures show the entire year although the relevant period is only a few weeks. Zoom in on the critical period.",
+            "Several figures are similar and redundant; fewer but more targeted figures would be stronger.",
+            "Key results (e.g. the comparison of all scenarios) are missing as a summarising figure or table."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Most of the depicted data is relevant and supports the analysis. Only minor inclusions of less essential results remain.",
+            "The depicted data is mostly relevant. A summarising table of all scenarios would help.",
+            "Good selection overall; some figures do not add information to the discussion."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The selection of results for tables and figures is appropriate and consistently supports the analysis and research questions.",
+            "The selection of figures and tables is focused and supports the argumentation.",
+            "Relevant results are shown at a suitable level of detail."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Perfectly selected data: every figure has a clear purpose and supports the argument.",
+            "Excellent balance of overview (summary table) and detail (critical periods)."
+          ]
+        }
       ]
     },
     {
@@ -179,11 +627,47 @@
       "Description": "Clear, consistent, and readable presentation of data in figures and tables, including suitable scales, legends, and layout.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "Figures and tables are difficult to read. Unclear scales, missing legends, or an inconsistent layout run throughout the paper." },
-        { "Points": 1, "Text": "Figures and tables are generally readable, but consistency issues remain. Comparable figures, for example, don't always share the same axis scales, which makes direct comparison harder and can be a bit misleading for the reader." },
-        { "Points": 2, "Text": "Figures and tables are mostly clear and consistently presented. Minor improvements are still possible in scales or legends." },
-        { "Points": 3, "Text": "Data is presented clearly and consistently, with suitable scales, legends, and layout throughout." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Figures and tables are difficult to read. Unclear scales, missing legends, or an inconsistent layout run throughout the paper.",
+            "The figures are barely readable (tiny text, no legends or labels, low resolution screenshots)."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Figures and tables are generally readable, but consistency issues remain. Comparable figures, for example, don't always share the same axis scales, which makes direct comparison harder and can be a bit misleading for the reader.",
+            "Fonts in the figures are too small compared to the text.",
+            "Colours are hard to distinguish (also in grayscale print), or too many lines are in one plot.",
+            "Figures are low-resolution or blurry; please export them as vector graphics or in higher resolution.",
+            "Different y-axis ranges are used for figures that should be compared directly.",
+            "Legends or units are missing in some plots."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Figures and tables are mostly clear and consistently presented. Minor improvements are still possible in scales or legends.",
+            "Figures are readable and mostly well designed; consistent colours for the same scenario across all figures would help.",
+            "Good overall presentation, with minor issues in legend placement or axis scaling."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Data is presented clearly and consistently, with suitable scales, legends, and layout throughout.",
+            "Clear, consistent and well readable figures and tables.",
+            "Good visual presentation with consistent colours and scales."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent visualisation: consistent style, scales and colours; the key message can be understood at a glance.",
+            "Very professional figures that are easy to compare."
+          ]
+        }
       ]
     },
     {
@@ -191,11 +675,45 @@
       "Description": "Baseline results are systematically analyzed and interpreted to identify relevant problems or potentials.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "Baseline results are presented but not meaningfully analyzed or interpreted." },
-        { "Points": 1, "Text": "The baseline results are described. The analysis, however, is superficial and does not clearly identify relevant problems or potentials." },
-        { "Points": 2, "Text": "The baseline is analyzed with some interpretation. The identification of relevant problems or potentials could still be more thorough." },
-        { "Points": 3, "Text": "Baseline results are systematically analyzed and interpreted, identifying relevant problems and potentials." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Baseline results are presented but not meaningfully analyzed or interpreted.",
+            "The baseline results are only shown, without any analysis."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The baseline results are described. The analysis, however, is superficial and does not clearly identify relevant problems or potentials.",
+            "The baseline is described, but no conclusion is drawn about what the main problem is.",
+            "Only average values are given; the critical times (peaks, nights, specific days) are not analysed.",
+            "The cause of the problem (solar gains, internal gains, ventilation, envelope) is not identified."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The baseline is analyzed with some interpretation. The identification of relevant problems or potentials could still be more thorough.",
+            "The baseline analysis identifies the main issue, but the causes are only partly separated (e.g. a breakdown of heat gains / losses is missing).",
+            "A good first analysis; a comparison with the measured data from Assignment 1 would strengthen it."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Baseline results are systematically analyzed and interpreted, identifying relevant problems and potentials.",
+            "The baseline is analysed systematically and the main problems and potentials are identified.",
+            "Clear analysis with an energy balance or breakdown of the main influences."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent baseline analysis with a clear identification of causes, supported by data and by the Assignment 1 findings.",
+            "In-depth analysis, which provides a solid basis for the scenarios."
+          ]
+        }
       ]
     },
     {
@@ -203,11 +721,44 @@
       "Description": "Optimization scenarios are consistently compared against the baseline to assess improvements or trade-offs.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "No baseline comparison is provided." },
-        { "Points": 1, "Text": "A baseline is mentioned, but comparisons are incomplete or inconsistent across scenarios." },
-        { "Points": 2, "Text": "Scenarios are compared against the baseline to some extent. The comparison, however, is not applied consistently across all scenarios." },
-        { "Points": 3, "Text": "Scenarios are consistently and clearly compared against the baseline." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "No baseline comparison is provided.",
+            "Scenario results are shown without relation to the baseline."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "A baseline is mentioned, but comparisons are incomplete or inconsistent across scenarios.",
+            "Results are shown side by side, but differences are not quantified (no absolute or relative improvement).",
+            "Only one indicator is compared; others (e.g. energy demand or winter comfort) are not checked for side effects."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Scenarios are compared against the baseline to some extent. The comparison, however, is not applied consistently across all scenarios.",
+            "Differences are quantified, but not all scenarios are compared with the same indicators or on the same period.",
+            "A comparison is done, but the reasons for the differences are not fully explained."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Scenarios are consistently and clearly compared against the baseline.",
+            "Scenarios are compared with the baseline in a clear and quantified way.",
+            "Good quantified comparison (absolute and relative) for all scenarios."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent comparison: quantified, consistent, covering several indicators including side effects and trade-offs.",
+            "Very clear presentation of the improvement over the baseline, with a good explanation of the reasons."
+          ]
+        }
       ]
     },
     {
@@ -215,11 +766,46 @@
       "Description": "The simulation setup is technically correct, with no major conceptual or physical errors affecting the results",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The simulation setup contains major conceptual or physical errors. These significantly affect the validity of the results." },
-        { "Points": 1, "Text": "The simulation setup contains some conceptual or technical errors. These affect parts of the results." },
-        { "Points": 2, "Text": "The simulation setup is largely correct. Only minor technical issues remain that do not substantially affect the results." },
-        { "Points": 3, "Text": "The simulation setup is technically correct, with no significant conceptual or physical errors identified." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The simulation setup contains major conceptual or physical errors. These significantly affect the validity of the results.",
+            "There are serious physical errors, for example in energy balance or units; results can not be trusted."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The simulation setup contains some conceptual or technical errors. These affect parts of the results.",
+            "Some results seem physically implausible (e.g. indoor temperature below the outdoor temperature in summer without a cooling source) and are not checked.",
+            "Units are mixed up or missing in tables and figures.",
+            "Inconsistent inputs, e.g. the same parameter has different values in text, table and model.",
+            "Window area, orientation or shading is not consistent with the apartment as described."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The simulation setup is largely correct. Only minor technical issues remain that do not substantially affect the results.",
+            "Mostly correct. A few simplifications (e.g. one thermal zone, constant U-values) have limited effect, but are not discussed.",
+            "Minor inconsistencies between text and figures (e.g. different values for the same quantity)."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The simulation setup is technically correct, with no significant conceptual or physical errors identified.",
+            "The model is technically correct and results are consistent with physical expectations.",
+            "No relevant errors found; only minor details could be improved."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Technically very sound; the results were checked (energy balance, comparison with measurement) and are consistent.",
+            "Excellent technical quality with sanity checks that are documented."
+          ]
+        }
       ]
     },
     {
@@ -227,11 +813,44 @@
       "Description": "Critical reflection on model assumptions, data uncertainties, and methodological limitations.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The paper does not reflect on the model's assumptions, data uncertainties, or methodological limitations." },
-        { "Points": 1, "Text": "Some limitations are acknowledged. The reflection, however, remains superficial and does not address key uncertainties." },
-        { "Points": 2, "Text": "The paper reflects on several assumptions and limitations. The discussion could go into more depth in places." },
-        { "Points": 3, "Text": "The paper critically reflects on the model's assumptions, data uncertainties, and methodological limitations." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The paper does not reflect on the model's assumptions, data uncertainties, or methodological limitations.",
+            "No limitations are mentioned; the model is presented as if it were reality."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Some limitations are acknowledged. The reflection, however, remains superficial and does not address key uncertainties.",
+            "Limitations are listed in one sentence only (e.g. 'the model is simplified') without saying what this means for the results.",
+            "Uncertain inputs such as infiltration, occupant behaviour and weather data are not reflected."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The paper reflects on several assumptions and limitations. The discussion could go into more depth in places.",
+            "The main limitations are named; a sensitivity check or a parameter variation would show how much they matter.",
+            "Good reflection of the assumptions, but their influence on the conclusions is not quantified."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The paper critically reflects on the model's assumptions, data uncertainties, and methodological limitations.",
+            "A critical reflection of the assumptions and limitations, including their influence on the result.",
+            "The main uncertainties are named and discussed in relation to the results."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Very thoughtful reflection including a sensitivity analysis or a discussion of how robust the conclusions are.",
+            "Excellent critical view on data quality, simplifications and transferability."
+          ]
+        }
       ]
     },
     {
@@ -239,11 +858,45 @@
       "Description": "Results are discussed critically, including interpretation, relevance, and potential sources of error.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "Results are presented but not discussed critically. Interpretation, relevance, and potential sources of error are largely missing." },
-        { "Points": 1, "Text": "Results are discussed, but the interpretation is largely descriptive. Relevance and possible sources of error are not sufficiently addressed." },
-        { "Points": 2, "Text": "Results are discussed with some critical interpretation. Relevance and sources of error could still be addressed more thoroughly." },
-        { "Points": 3, "Text": "Results are discussed critically, with clear interpretation of their relevance and potential sources of error." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "Results are presented but not discussed critically. Interpretation, relevance, and potential sources of error are largely missing.",
+            "There is no discussion section; results are only listed."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Results are discussed, but the interpretation is largely descriptive. Relevance and possible sources of error are not sufficiently addressed.",
+            "The discussion mainly repeats the numbers. Please explain why the scenarios behave as they do.",
+            "No comparison with literature or expected values.",
+            "Surprising results (e.g. a scenario that does not help) are not questioned."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Results are discussed with some critical interpretation. Relevance and sources of error could still be addressed more thoroughly.",
+            "Results are interpreted, but trade-offs (e.g. less overheating in summer but higher heating demand in winter) are not discussed.",
+            "Reasonable discussion; the practical relevance (cost, effort, feasibility) is only touched upon."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Results are discussed critically, with clear interpretation of their relevance and potential sources of error.",
+            "Results are discussed critically, including causes, practical relevance and sources of error.",
+            "Good interpretation with a comparison to expectations or literature."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent, critical discussion with explanations, trade-offs, comparison with literature and a view on practical implementation.",
+            "In-depth interpretation that goes beyond the numbers; unexpected results are explained."
+          ]
+        }
       ]
     },
     {
@@ -251,11 +904,45 @@
       "Description": "Clear conclusions are drawn from the results, with a reasonable outlook or recommendations for future work.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "No clear conclusions are drawn from the results. There is little to no outlook or recommendations for future work." },
-        { "Points": 1, "Text": "Conclusions are drawn but remain vague, or are only loosely connected to the results. The outlook is underdeveloped." },
-        { "Points": 2, "Text": "Conclusions are drawn from the results, and a general outlook is provided. It could still be more specific or better justified." },
-        { "Points": 3, "Text": "Clear conclusions are drawn from the results, with a reasonable outlook and recommendations for future work." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "No clear conclusions are drawn from the results. There is little to no outlook or recommendations for future work.",
+            "There is no conclusion section."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "Conclusions are drawn but remain vague, or are only loosely connected to the results. The outlook is underdeveloped.",
+            "The conclusion summarises the work but does not answer the research question.",
+            "New results or aspects are introduced in the conclusion.",
+            "The outlook is a generic statement (e.g. 'more scenarios could be simulated') without concrete suggestions."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "Conclusions are drawn from the results, and a general outlook is provided. It could still be more specific or better justified.",
+            "A clear conclusion; the recommendation for the apartment could be more specific (which measure first, expected effect).",
+            "The outlook is reasonable but not linked to the identified limitations."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "Clear conclusions are drawn from the results, with a reasonable outlook and recommendations for future work.",
+            "Clear conclusions that answer the research question, with a meaningful outlook.",
+            "Conclusions are supported by the results; recommendations are realistic."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Excellent conclusion: concise, answers the research question and gives concrete recommendations and a well-founded outlook.",
+            "Very good synthesis of the findings with a clear perspective for further work."
+          ]
+        }
       ]
     },
     {
@@ -263,11 +950,45 @@
       "Description": "The paper is internally consistent, with aligned objectives, methods, results, and conclusions.",
       "Section": "Content",
       "Feedback": [
-        { "Points": 0, "Text": "The paper lacks internal consistency. Objectives, methods, results, and conclusions do not align well with one another." },
-        { "Points": 1, "Text": "The paper is partially consistent, but some sections — for example objectives and conclusions — do not fully align." },
-        { "Points": 2, "Text": "The paper is largely coherent. Objectives, methods, results, and conclusions are mostly aligned, aside from minor inconsistencies." },
-        { "Points": 3, "Text": "The paper is internally consistent, with objectives, methods, results, and conclusions well aligned." },
-        { "Points": 4, "Text": "" }
+        {
+          "Points": 0,
+          "Text": [
+            "The paper lacks internal consistency. Objectives, methods, results, and conclusions do not align well with one another.",
+            "The paper reads like separate parts that are not connected."
+          ]
+        },
+        {
+          "Points": 1,
+          "Text": [
+            "The paper is partially consistent, but some sections — for example objectives and conclusions — do not fully align.",
+            "The research question in the introduction is not answered in the conclusion.",
+            "Some numbers or terms differ between sections (abstract vs. results, names of scenarios).",
+            "Scenarios appear in the results that were not introduced in the method section."
+          ]
+        },
+        {
+          "Points": 2,
+          "Text": [
+            "The paper is largely coherent. Objectives, methods, results, and conclusions are mostly aligned, aside from minor inconsistencies.",
+            "Mostly consistent; a clearer red thread between baseline analysis, scenario choice and conclusion would help.",
+            "Good overall, with some small inconsistencies in naming and numbers."
+          ]
+        },
+        {
+          "Points": 3,
+          "Text": [
+            "The paper is internally consistent, with objectives, methods, results, and conclusions well aligned.",
+            "The paper is coherent: research question, methods, results and conclusion fit together.",
+            "Consistent use of names, numbers and terminology throughout."
+          ]
+        },
+        {
+          "Points": 4,
+          "Text": [
+            "Very coherent paper with a strong red thread from motivation to conclusion.",
+            "Excellent consistency: everything fits together and supports the main message."
+          ]
+        }
       ]
     }
   ]

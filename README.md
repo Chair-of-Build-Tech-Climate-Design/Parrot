@@ -98,11 +98,10 @@ Saved results look like this:
       "question": "Document layout & Use of template",
       "description": "Correct use of the provided Moodle template...",
       "points": 2,
-      "feedback_text": "Neutral / meets expectations.",
+      "feedback_text": "Neutral / meets expectations. see Fig. 3.",
       "feedback_selections": [
-        { "points": 2, "text": "Neutral / meets expectations." }
-      ],
-      "appended_text": "extra note"
+        { "points": 2, "text": "Neutral / meets expectations.", "appended_text": "see Fig. 3" }
+      ]
     }
   ]
 }
@@ -112,14 +111,16 @@ Saved results look like this:
   value among the checked options by default, or your overwritten
   value if you typed one in.
 - `feedback_text` is all selected feedback texts joined into a single
-  paragraph.
-- `feedback_selections` gives you the same information as a structured
-  list, one entry per checked option, in case you need points/text
-  separately.
-- `appended_text` is whatever you typed into the optional "Append" box
-  for that question — kept separate rather than pre-merged into
-  `feedback_text`, so the PDF report (or any other consumer) can decide
-  how to present it.
+  paragraph, each followed by its own appended note (if any).
+- `feedback_selections` is the structured version: one entry per checked
+  option with its `points`, `text` and `appended_text`.
+- **Per-answer notes:** when you check an answer, a small "Append to this
+  answer" box opens right below it. Use it to say where you found the
+  problem ("see Fig. 3 and 5", "p. 6, second paragraph") or to add a
+  comment. Each selected answer has its own note; unchecking an answer
+  hides its box (the typed text is ignored while unchecked).
+- Older output files with a question-level `appended_text` are still
+  rendered correctly by the PDF generator.
 
 ## PDF report templates
 

@@ -10,7 +10,7 @@ Workflow:
     1. Pick a profile from src/profiles/ (dropdown, searched automatically).
     2. Click "Load profile" - a tab is created for each Section.
     3. For each question, check the matching feedback option(s) and, if
-       you like, add extra free text in the "Append" box.
+       you like, add a note under any selected answer.
     4. Click "Save feedback" to write the result to a JSON file, and/or
        "Generate PDF report" to render it straight to a formatted PDF.
 """
@@ -61,7 +61,7 @@ class QuestionRow(ttk.Frame):
     readable, no truncation, multiple may be selected at once, and
     doesn't balloon the page even with many options), an editable
     "Points" field (auto-updated from the checked options but freely
-    overwritable), and an "Append" free-text box for an extra note.
+    overwritable), and a free-text note that can be appended to each selected answer.
     """
 
     # How many options are shown before the checklist starts scrolling
@@ -98,7 +98,8 @@ class QuestionRow(ttk.Frame):
         # a lot of empty space and long lists scroll instead of growing.
         approx_height = min(len(option_labels), self._VISIBLE_OPTION_ROWS) * 28 + 8
         self.options_list = CheckboxList(
-            self, option_labels, max_height=max(approx_height, 40),
+            self, option_labels, max_height=max(approx_height, 40) + 160,
+            with_append=True,
         )
         self.options_list.pack(anchor="w", fill="x")
         self.options_list.set_on_change(self._on_options_changed)
@@ -120,11 +121,6 @@ class QuestionRow(ttk.Frame):
             command=self._reset_points_to_sum,
         ).pack(side="left")
 
-        append_label = ttk.Label(self, text="Append (optional):")
-        append_label.pack(anchor="w", pady=(6, 0))
-
-        self.append_text = tk.Text(self, height=2, wrap="word")
-        self.append_text.pack(fill="x", pady=(2, 0))
 
     # ------------------------------------------------------------------
     # Option / points interaction
@@ -184,38 +180,46 @@ class QuestionRow(ttk.Frame):
             value = int(value)
         return value
 
-    def _combined_feedback_text(self):
-        """Selected feedback texts joined into a single paragraph."""
-        selected = self._selected_options()
-        return " ".join(option.text.strip() for option in selected)
+    @staticmethod
+    def _join(text, appended):
+        text = text.strip()
+        if not appended:
+            return text
+        if appended[-1] not in ".!?:;)":
+            appended += "."
+        return f"{text} {appended}"
+
+    def _selected_with_appends(self):
+        """[(option, appended_text), ...] for every checked answer."""
+        return [
+            (self.question.feedback[i], self.options_list.append_text(i))
+            for i in self.options_list.selected_indices()
+        ]
 
     def get_selection(self):
-        appended = self.append_text.get("1.0", "end").strip()
-        selected = self._selected_options()
-
-        if not selected:
-            return {
-                "section": self.question.section,
-                "question": self.question.question,
-                "description": self.question.description,
-                "points": self._resolved_points() if self._points_manual else None,
-                "feedback_text": None,
-                "feedback_selections": [],
-                "appended_text": appended,
-            }
-
-        feedback_text = self._combined_feedback_text()
-        return {
+        pairs = self._selected_with_appends()
+        base = {
             "section": self.question.section,
             "question": self.question.question,
             "description": self.question.description,
-            "points": self._resolved_points(),
-            "feedback_text": feedback_text,
-            "feedback_selections": [
-                {"points": option.points, "text": option.text} for option in selected
-            ],
-            "appended_text": appended,
         }
+        if not pairs:
+            base.update({
+                "points": self._resolved_points() if self._points_manual else None,
+                "feedback_text": None,
+                "feedback_selections": [],
+            })
+            return base
+
+        base.update({
+            "points": self._resolved_points(),
+            "feedback_text": " ".join(self._join(o.text, a) for o, a in pairs),
+            "feedback_selections": [
+                {"points": o.points, "text": o.text, "appended_text": a}
+                for o, a in pairs
+            ],
+        })
+        return base
 
     def is_answered(self) -> bool:
         return bool(self.options_list.selected_indices())

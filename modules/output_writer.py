@@ -24,7 +24,8 @@ def build_output(
     Assemble the final output dict.
 
     selections: list of dicts, each with keys:
-        section, question, points, feedback_text, appended_text
+        section, question, points, feedback_text, feedback_selections
+        (each selection: points, text, appended_text)
     """
     total_points = sum(
         s["points"] for s in selections if s.get("points") is not None

@@ -75,20 +75,31 @@ class CheckboxList(ttk.Frame):
     height stays predictable regardless of how many options it has.
     """
 
-    def __init__(self, parent, labels, *, max_height=140, wraplength=640, **kwargs):
+    def __init__(self, parent, labels, *, max_height=140, wraplength=640,
+                 with_append=False, **kwargs):
         super().__init__(parent, **kwargs)
         self.vars = [tk.BooleanVar(value=False) for _ in labels]
         self._on_change = None
+        self._max_height = max_height
+        self._with_append = with_append
+        self._append_boxes = [None] * len(labels)
+        self._append_frames = [None] * len(labels)
 
-        canvas = tk.Canvas(self, height=max_height, highlightthickness=1,
+        canvas = tk.Canvas(self, height=40, highlightthickness=1,
                            highlightbackground="#cccccc")
         scrollbar = ttk.Scrollbar(self, orient="vertical", command=canvas.yview)
         self.inner = ttk.Frame(canvas)
 
-        self.inner.bind(
-            "<Configure>",
-            lambda e: canvas.configure(scrollregion=canvas.bbox("all")),
-        )
+        self._canvas = canvas
+
+        def _inner_configure(e):
+            canvas.configure(scrollregion=canvas.bbox("all"))
+            # Grow with the content (e.g. when append boxes appear) up to
+            # max_height, then scroll.
+            canvas.configure(height=max(40, min(self.inner.winfo_reqheight() + 2,
+                                                self._max_height)))
+
+        self.inner.bind("<Configure>", _inner_configure)
         window_id = canvas.create_window((0, 0), window=self.inner, anchor="nw")
         canvas.configure(yscrollcommand=scrollbar.set)
 
@@ -120,13 +131,20 @@ class CheckboxList(ttk.Frame):
         _bind_local_wheel(canvas)
         _bind_local_wheel(self.inner)
 
+        self._bind_local_wheel = _bind_local_wheel
+
         for idx, label_text in enumerate(labels):
-            row = ttk.Frame(self.inner)
-            row.pack(anchor="w", fill="x", pady=1, padx=3)
+            item = ttk.Frame(self.inner)
+            item.pack(anchor="w", fill="x", pady=1, padx=3)
+            _bind_local_wheel(item)
+
+            row = ttk.Frame(item)
+            row.pack(anchor="w", fill="x")
             _bind_local_wheel(row)
 
             cb = ttk.Checkbutton(
-                row, variable=self.vars[idx], command=self._changed,
+                row, variable=self.vars[idx],
+                command=lambda i=idx: self._changed(i),
             )
             cb.pack(side="left", anchor="n")
             _bind_local_wheel(cb)
@@ -139,11 +157,30 @@ class CheckboxList(ttk.Frame):
             lbl.bind("<Button-1>", lambda e, i=idx: self._toggle(i))
             _bind_local_wheel(lbl)
 
+            if with_append:
+                # Per-answer note, only visible while the answer is checked.
+                frame = ttk.Frame(item)
+                ttk.Label(frame, text="\u21b3 Append to this answer:",
+                          foreground="#555555").pack(anchor="w")
+                box = tk.Text(frame, height=2, wrap="word")
+                box.pack(fill="x", padx=(0, 4))
+                _bind_local_wheel(frame)
+                _bind_local_wheel(box)
+                self._append_frames[idx] = frame
+                self._append_boxes[idx] = box
+
     def _toggle(self, idx):
         self.vars[idx].set(not self.vars[idx].get())
-        self._changed()
+        self._changed(idx)
 
-    def _changed(self):
+    def _changed(self, idx=None):
+        if self._with_append and idx is not None:
+            frame = self._append_frames[idx]
+            if self.vars[idx].get():
+                frame.pack(fill="x", padx=(24, 0), pady=(0, 3))
+                self._append_boxes[idx].focus_set()
+            else:
+                frame.pack_forget()
         if self._on_change:
             self._on_change()
 
@@ -153,3 +190,8 @@ class CheckboxList(ttk.Frame):
 
     def selected_indices(self):
         return [i for i, v in enumerate(self.vars) if v.get()]
+
+    def append_text(self, idx):
+        """The note typed under answer `idx` (empty string if none)."""
+        box = self._append_boxes[idx]
+        return box.get("1.0", "end").strip() if box is not None else ""
